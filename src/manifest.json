@@ -7,6 +7,10 @@
     "scripting",
     "storage"
   ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "host_permissions": [
     "https://*.douban.com/*",
     "https://mastodon.social/*"
@@ -19,8 +23,13 @@
         "https://douban.com/*"
       ],
       "js": ["content.js"],
-      "run_at": "document_start",
-      "world": "MAIN"
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
