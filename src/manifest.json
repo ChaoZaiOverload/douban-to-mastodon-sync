@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Douban Mastodon Sync",
+  "version": "1.0",
+  "description": "同步豆瓣广播到 Mastodon",
+  "permissions": [
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.douban.com/*",
+    "https://mastodon.social/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.douban.com/*",
+        "https://m.douban.com/*",
+        "https://douban.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
