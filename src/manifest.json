@@ -4,7 +4,6 @@
   "version": "1.0",
   "description": "同步豆瓣广播到 Mastodon",
   "permissions": [
-    "scripting",
     "storage"
   ],
   "options_ui": {
