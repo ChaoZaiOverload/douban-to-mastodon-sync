@@ -11,8 +11,10 @@
     "open_in_tab": true
   },
   "host_permissions": [
-    "https://*.douban.com/*",
-    "https://mastodon.social/*"
+    "https://*.douban.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*"
   ],
   "icons": {
     "128": "icon128.png"
