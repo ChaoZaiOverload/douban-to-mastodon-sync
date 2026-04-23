@@ -6,6 +6,9 @@
   "permissions": [
     "storage"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
@@ -33,7 +36,11 @@
   "web_accessible_resources": [
     {
       "resources": ["injected.js"],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "https://www.douban.com/*",
+        "https://m.douban.com/*",
+        "https://douban.com/*"
+      ]
     }
   ]
 }
