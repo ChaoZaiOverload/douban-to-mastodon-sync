@@ -24,9 +24,9 @@ function injectScriptFile() {
 
 // 2. 检查并显示待显示的结果（加载时 + 监听后续写入）
 function checkAndShowToast() {
-    chrome.storage.local.get(['pendingToast'], (res) => {
-        if (res.pendingToast && Date.now() - res.pendingToast.at < 30000) {
-            chrome.storage.local.remove('pendingToast');
+    chrome.storage.session.get(['pendingToast'], (res) => {
+        if (res.pendingToast) {
+            chrome.storage.session.remove('pendingToast');
             showToast(res.pendingToast.message, res.pendingToast.success);
         }
     });
@@ -35,8 +35,8 @@ function checkAndShowToast() {
 checkAndShowToast();
 
 chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === 'local' && changes.pendingToast?.newValue) {
-        chrome.storage.local.remove('pendingToast');
+    if (area === 'session' && changes.pendingToast?.newValue) {
+        chrome.storage.session.remove('pendingToast');
         const { message, success } = changes.pendingToast.newValue;
         showToast(message, success);
     }
@@ -61,7 +61,7 @@ window.addEventListener("message", async (event) => {
             });
         } else {
             console.error(`${TAG} ❌ 同步失败：未找到配置信息。`);
-            chrome.storage.local.set({ pendingToast: { message: '同步失败：请先配置实例和令牌', success: false, at: Date.now() } });
+            chrome.storage.session.set({ pendingToast: { message: '同步失败：请先配置实例和令牌', success: false } });
         }
     });
 });
