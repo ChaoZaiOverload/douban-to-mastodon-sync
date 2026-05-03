@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Douban Mastodon Sync",
-  "version": "1.2",
+  "version": "1.3",
   "description": "同步豆瓣广播到 Mastodon",
   "permissions": [
     "storage"
