@@ -44,6 +44,19 @@
             } catch (e) { console.error(TAG_ACTIVE, "解析失败", e); }
         }
 
+        // Feed API logging (investigation)
+        if (url.includes('home_timeline') || url.includes('feed') || url.includes('statuses')) {
+            this.addEventListener('load', function() {
+                if (this.status >= 200 && this.status < 300) {
+                    try {
+                        const res = JSON.parse(this.responseText);
+                        console.log(TAG_ACTIVE, "📋 Feed API URL:", url);
+                        console.log(TAG_ACTIVE, "📋 Feed response:", res);
+                    } catch(e) {}
+                }
+            });
+        }
+
         // Reshare interception
         if (url.includes('reshare')) {
             try {

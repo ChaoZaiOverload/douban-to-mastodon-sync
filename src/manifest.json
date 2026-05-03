@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Douban Mastodon Sync",
+  "name": "自动同步豆瓣广播到 Mastodon",
   "version": "1.3",
-  "description": "同步豆瓣广播到 Mastodon",
+  "description": "当你发布新的豆瓣广播时，会将广播同步到你的Mastodon",
   "permissions": [
     "storage"
   ],
